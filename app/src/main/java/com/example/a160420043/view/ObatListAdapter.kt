@@ -22,7 +22,6 @@ class ObatListAdapter(val obatList:ArrayList<Obat>)
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.obat_list_item, parent, false)
         return ObatViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: ObatViewHolder, position: Int) {

@@ -6,6 +6,7 @@ import com.example.a160420043.model.Jadwal
 import com.example.a160420043.model.Obat
 
 class ObatListViewModel: ViewModel() {
+
     val obatsLD = MutableLiveData<ArrayList<Obat>>()
     val obatDetailLD = MutableLiveData<ArrayList<Obat>>()
 

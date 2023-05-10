@@ -19,15 +19,7 @@ import com.google.android.material.textfield.TextInputEditText
  * create an instance of this fragment.
  */
 class JadwalPraktikDetailFragment : Fragment() {
-    // VERSION 1
-//    private lateinit var viewModel:JadwalDetailListViewModel
-
-    // VERSION 2
     private lateinit var viewModel:JadwalListViewModel
-    // BATAS
-
-//    private val jadwalListAdapter = JadwalPraktikDetailAdapter(arrayListOf())
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,15 +31,9 @@ class JadwalPraktikDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val jadwalId = JadwalPraktikDetailFragmentArgs.fromBundle(requireArguments()).index
 
-//        val recView = view.findViewById<RecyclerView>(R.id.recViewJadwalDetail)
-
-        // VERSION 1
-//        viewModel = ViewModelProvider(this).get(JadwalDetailListViewModel::class.java)
-//        viewModel.refresh(jadwalId)
-
-        // VERSION 2
         viewModel = ViewModelProvider(this).get(JadwalListViewModel::class.java)
         viewModel.searchId(jadwalId)
 
@@ -65,16 +51,5 @@ class JadwalPraktikDetailFragment : Fragment() {
             val imageView = view.findViewById<ImageView>(R.id.imgViewJadwalDetail)
             imageView.loadImage(jadwalDetail[0].photoUrl)
         })
-
-//        recView.layoutManager = LinearLayoutManager(context)
-//        recView.adapter = jadwalListAdapter
-//
-//        observeViewModel()
     }
-
-//    fun observeViewModel() {
-//        viewModel.jadwalDetailLD.observe(viewLifecycleOwner, Observer {
-//            jadwalListAdapter.updateJadwalList(it)
-//        })
-//    }
 }

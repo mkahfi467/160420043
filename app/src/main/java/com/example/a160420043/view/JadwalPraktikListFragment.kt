@@ -44,12 +44,6 @@ class JadwalPraktikListFragment : Fragment() {
         recView.adapter = jadwalListAdapter
 
         observeViewModel()
-
-//        val btnStart = view.findViewById<Button>(R.id.button2)
-//        btnStart.setOnClickListener {
-//            val action = JadwalPraktikListFragmentDirections.actionJadwalPraktikListFragmentToJadwalPraktikDetailFragment()
-//            Navigation.findNavController(it).navigate(action)
-//        }
     }
 
     fun observeViewModel() {

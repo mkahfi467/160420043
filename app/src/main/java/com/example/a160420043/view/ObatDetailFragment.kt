@@ -32,7 +32,9 @@ class ObatDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val idObat = ObatDetailFragmentArgs.fromBundle(requireArguments()).obatId
+
         viewModel = ViewModelProvider(this).get(ObatListViewModel::class.java)
         viewModel.obatDetail(idObat)
 
@@ -50,27 +52,5 @@ class ObatDetailFragment : Fragment() {
             val imageView = view.findViewById<ImageView>(R.id.imgViewObatDetail)
             imageView.loadImage(obatDetail[0].photoUrl)
         })
-
-        // VERSION 2
-//        viewModel.obatDetailLD.observe(viewLifecycleOwner, Observer {  ->
-//            val txtID = view.findViewById<TextInputEditText>(R.id.txtID)
-//            txtID.setText(student.id.toString())
-//
-//
-//            val txtName = view.findViewById<TextInputEditText>(R.id.txtName)
-//            txtName.setText(student.name.toString())
-//
-//            val txtBod = view.findViewById<TextInputEditText>(R.id.txtBod)
-//            txtBod.setText(student.dob.toString())
-//
-//            val txtPhone = view.findViewById<TextInputEditText>(R.id.txtPhone)
-//            txtPhone.setText(student.phone.toString())
-////            Log.d("TEST", student.name.toString())
-//
-//            // WEEK 6 CLASS Exercise
-//            var imageView = view.findViewById<ImageView>(R.id.imageView2)
-//            var progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
-//            imageView.loadImage(student.photoUrl.toString(), progressBar)
-//        })
     }
 }

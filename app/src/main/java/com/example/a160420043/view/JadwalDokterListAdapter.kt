@@ -42,7 +42,6 @@ class JadwalDokterListAdapter(val jadwalDokterList:ArrayList<Jadwal>)
 
         val imageView = holder.view.findViewById<ImageView>(R.id.imgViewJadwal)
         imageView.loadImage(jadwalDokterList[position].photoUrl)
-//        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBar)
     }
 
     override fun getItemCount(): Int {
