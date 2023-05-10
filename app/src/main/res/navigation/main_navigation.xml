@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/itemHome">
+
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="com.example.a160420043.view.JadwalPraktikListFragment"
+        android:label="fragment_jadwal_praktik_list"
+        tools:layout="@layout/fragment_jadwal_praktik_list" >
+        <action
+            android:id="@+id/action_itemHome_to_jadwalPraktikDetail"
+            app:destination="@id/jadwalPraktikDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemObat"
+        android:name="com.example.a160420043.view.ObatListFragment"
+        android:label="fragment_obat_list"
+        tools:layout="@layout/fragment_obat_list" >
+        <action
+            android:id="@+id/action_itemObat_to_obatDetailFragment"
+            app:destination="@id/obatDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jadwalPraktikDetail"
+        android:name="com.example.a160420043.view.JadwalPraktikDetailFragment"
+        android:label="fragment_jadwal_praktik_detail"
+        tools:layout="@layout/fragment_jadwal_praktik_detail" >
+        <argument
+            android:name="index"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/obatDetailFragment"
+        android:name="com.example.a160420043.view.ObatDetailFragment"
+        android:label="fragment_obat_detail"
+        tools:layout="@layout/fragment_obat_detail" >
+        <argument
+            android:name="obatId"
+            app:argType="string" />
+    </fragment>
+</navigation>
