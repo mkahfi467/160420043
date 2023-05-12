@@ -13,3 +13,10 @@ data class Obat(
     val kategori:String?,
     val photoUrl: String?
 )
+
+data class Layanan(
+    val id:String?,
+    val nama:String?,
+    val keterangan:String?,
+    val photoUrl: String?
+)

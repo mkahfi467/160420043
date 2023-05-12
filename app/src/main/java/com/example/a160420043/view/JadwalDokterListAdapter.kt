@@ -26,12 +26,12 @@ class JadwalDokterListAdapter(val jadwalDokterList:ArrayList<Jadwal>)
     }
 
     override fun onBindViewHolder(holder: JadwalViewHolder, position: Int) {
-        val txtNama = holder.view.findViewById<TextView>(R.id.txtNamaJadwal)
+        val txtNama = holder.view.findViewById<TextView>(R.id.txtNamaLayanan)
         txtNama.text = jadwalDokterList[position].namaDokter
         val txtHari = holder.view.findViewById<TextView>(R.id.txtHariJadwal)
         txtHari.text = jadwalDokterList[position].hari
 
-        val btnDetail = holder.view.findViewById<Button>(R.id.btnDetailJadwal)
+        val btnDetail = holder.view.findViewById<Button>(R.id.btnDetailLayanan)
         btnDetail.setOnClickListener {
             val jadwal_id = jadwalDokterList[position].id
 

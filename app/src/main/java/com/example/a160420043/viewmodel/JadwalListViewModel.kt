@@ -24,9 +24,6 @@ public class JadwalListViewModel(application: Application): AndroidViewModel(app
 
     fun refresh() {
         queue = Volley.newRequestQueue(getApplication())
-//        val url = "https://gist.githubusercontent.com/mkahfi467/58011889af2df7b56dca20593867b154/raw/5760735b62255065b58e80df51c4e2f9c7ee1681/jadwal.php"
-//        val url = "https://gist.githubusercontent.com/kahfisem06/951d3c2a724ae2b1573ae07e4981d244/raw/71f769a8e58b016f5e0af40565647486189dfbba/jadwal.php"
-//        val url = "https://gist.githubusercontent.com/kahfisem06/951d3c2a724ae2b1573ae07e4981d244/raw/9d024f32f957310a6190f4c2326733695ac8c09a/jadwal.php"
         val url = "https://160420043-160420098-160720049.000webhostapp.com/jadwal_list.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,

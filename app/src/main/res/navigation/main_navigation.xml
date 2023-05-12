@@ -41,4 +41,26 @@
             android:name="obatId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.a160420043.view.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/itemLayanan"
+        android:name="com.example.a160420043.view.LayananListFragment"
+        android:label="fragment_layanan_list"
+        tools:layout="@layout/fragment_layanan_list" >
+        <action
+            android:id="@+id/action_itemLayanan_to_layananListDetailFragment"
+            app:destination="@id/layananListDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/layananListDetailFragment"
+        android:name="com.example.a160420043.view.LayananListDetailFragment"
+        android:label="fragment_layanan_list_detail"
+        tools:layout="@layout/fragment_layanan_list_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

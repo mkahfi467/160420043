@@ -12,4 +12,9 @@
         android:icon="@drawable/baseline_medication_24"
         android:title="Obat"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/itemLayanan"
+        android:icon="@drawable/baseline_medical_services_24"
+        android:title="Layanan"
+        app:showAsAction="always" />
 </menu>
