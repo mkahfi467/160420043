@@ -33,7 +33,6 @@ public class JadwalListViewModel(application: Application): AndroidViewModel(app
                 jadwalsLD.value = result
 
                 Log.d("showvolley", jadwalsLD.value.toString())
-//                Log.d("showvolley", jadwalsLD.value.toString())
             },
             {
                 Log.d("showvolley", it.toString())
@@ -51,9 +50,6 @@ public class JadwalListViewModel(application: Application): AndroidViewModel(app
                 val sType = object: TypeToken<Jadwal>() { }.type
                 val result = Gson().fromJson<Jadwal>(it, sType)
                 jadwalDetailLD.value = result
-
-                Log.d("showvolley", jadwalsLD.value.toString())
-//                Log.d("showvolley", jadwalsLD.value.toString())
             },
             {
                 Log.d("showvolley", it.toString())
