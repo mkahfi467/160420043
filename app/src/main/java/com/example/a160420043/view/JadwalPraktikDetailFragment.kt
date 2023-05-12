@@ -43,13 +43,13 @@ class JadwalPraktikDetailFragment : Fragment() {
             val txtHari = view.findViewById<TextInputEditText>(R.id.txtHariJadwalDetail)
             val txtPhotoUrl = view.findViewById<TextInputEditText>(R.id.txtPhotoUrlJadwalDetail)
 
-            txtId.setText(jadwalDetail[0].id.toString())
-            txtNama.setText(jadwalDetail[0].namaDokter.toString())
-            txtHari.setText(jadwalDetail[0].hari.toString())
-            txtPhotoUrl.setText(jadwalDetail[0].photoUrl.toString())
+            txtId.setText(jadwalDetail.id.toString())
+            txtNama.setText(jadwalDetail.namaDokter.toString())
+            txtHari.setText(jadwalDetail.hari.toString())
+            txtPhotoUrl.setText(jadwalDetail.photoUrl.toString())
 
             val imageView = view.findViewById<ImageView>(R.id.imgViewJadwalDetail)
-            imageView.loadImage(jadwalDetail[0].photoUrl)
+            imageView.loadImage(jadwalDetail.photoUrl)
         })
     }
 }

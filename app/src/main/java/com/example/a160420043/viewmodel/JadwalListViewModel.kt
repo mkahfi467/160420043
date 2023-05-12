@@ -14,31 +14,54 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 //class JadwalListViewModel(application: Application):AndroidViewModel(application) {
-public class JadwalListViewModel:ViewModel() {
-
+public class JadwalListViewModel(application: Application): AndroidViewModel(application) {
     val jadwalsLD = MutableLiveData<ArrayList<Jadwal>>()
-    val jadwalDetailLD = MutableLiveData<ArrayList<Jadwal>>()
+    val jadwalDetailLD = MutableLiveData<Jadwal>()
 
-    val jadwal1 =
-        Jadwal("16055","dr. Stella","senin", "https://res.cloudinary.com/dk0z4ums3/image/upload/w_100,h_100,c_thumb,dpr_2.0/v1527739362/image_doctor/dr.%20stella%20shirley%20mansur.jpg.jpg")
-    val jadwal2 =
-        Jadwal("13312","dr. Paulus","selasa", "https://res.cloudinary.com/dk0z4ums3/image/upload/w_100,h_100,c_thumb,dpr_2.0/v1551767727/image_doctor/dr-paulus-sugiantro.jpg.jpg")
-    val jadwal3 =
-        Jadwal("11204","dr. Soetojo","rabu", "https://res.cloudinary.com/dk0z4ums3/image/upload/w_100,h_100,c_thumb,dpr_2.0/v1501041580/image_doctor/%282%29%20Prof.%20Dr.%20Soetojo%2C%20dr.%2C%20SpU%20%28K%29edit.jpg.jpg")
+    // VERSION 2
+    val TAG = "VOLLEY"
+    private var queue:RequestQueue? = null
 
-    val jadwalList:ArrayList<Jadwal> = arrayListOf<Jadwal>(jadwal1, jadwal2, jadwal3)
+    fun refresh() {
+        queue = Volley.newRequestQueue(getApplication())
+//        val url = "https://gist.githubusercontent.com/mkahfi467/58011889af2df7b56dca20593867b154/raw/5760735b62255065b58e80df51c4e2f9c7ee1681/jadwal.php"
+//        val url = "https://gist.githubusercontent.com/kahfisem06/951d3c2a724ae2b1573ae07e4981d244/raw/71f769a8e58b016f5e0af40565647486189dfbba/jadwal.php"
+//        val url = "https://gist.githubusercontent.com/kahfisem06/951d3c2a724ae2b1573ae07e4981d244/raw/9d024f32f957310a6190f4c2326733695ac8c09a/jadwal.php"
+        val url = "https://160420043-160420098-160720049.000webhostapp.com/jadwal_list.php"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                val sType = object: TypeToken<ArrayList<Jadwal>>() { }.type
+                val result = Gson().fromJson<ArrayList<Jadwal>>(it, sType)
+                jadwalsLD.value = result
 
-    public fun refresh() {
-        jadwalsLD.value = jadwalList
+                Log.d("showvolley", jadwalsLD.value.toString())
+//                Log.d("showvolley", jadwalsLD.value.toString())
+            },
+            {
+                Log.d("showvolley", it.toString())
+            })
+        stringRequest.tag = TAG
+        queue?.add(stringRequest)
     }
 
     fun searchId(jadwalId:String) {
-        jadwalList.forEachIndexed{ index, data ->
-            val id = data.id
-            if (id == jadwalId) {
-                val array:ArrayList<Jadwal> = arrayListOf<Jadwal>(jadwalList[index])
-                jadwalDetailLD.value = array
-            }
-        }
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://160420043-160420098-160720049.000webhostapp.com/jadwal_list.php?id=$jadwalId"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                val sType = object: TypeToken<Jadwal>() { }.type
+                val result = Gson().fromJson<Jadwal>(it, sType)
+                jadwalDetailLD.value = result
+
+                Log.d("showvolley", jadwalsLD.value.toString())
+//                Log.d("showvolley", jadwalsLD.value.toString())
+            },
+            {
+                Log.d("showvolley", it.toString())
+            })
+        stringRequest.tag = TAG
+        queue?.add(stringRequest)
     }
 }
