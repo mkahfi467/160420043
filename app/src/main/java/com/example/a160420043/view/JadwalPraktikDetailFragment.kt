@@ -48,7 +48,7 @@ class JadwalPraktikDetailFragment : Fragment() {
             txtHari.setText(jadwalDetail.hari.toString())
             txtPhotoUrl.setText(jadwalDetail.photoUrl.toString())
 
-            val imageView = view.findViewById<ImageView>(R.id.imgViewJadwalDetail)
+            val imageView = view.findViewById<ImageView>(R.id.imgViewLayananDetail)
             imageView.loadImage(jadwalDetail.photoUrl)
         })
     }
