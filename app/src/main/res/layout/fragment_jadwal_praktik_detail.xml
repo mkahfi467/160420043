@@ -33,7 +33,7 @@
             app:hintEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgViewLayananDetail">
+            app:layout_constraintTop_toBottomOf="@+id/imgViewJadwalDetail">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtIdJadwalDetail"
