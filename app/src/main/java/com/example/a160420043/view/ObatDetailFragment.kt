@@ -44,13 +44,13 @@ class ObatDetailFragment : Fragment() {
             val txtKategori = view.findViewById<TextInputEditText>(R.id.txtKategoriObatDetail)
             val txtPhotoUrl = view.findViewById<TextInputEditText>(R.id.txtPhotoUrlObatDetail)
 
-            txtId.setText(obatDetail[0].id.toString())
-            txtNama.setText(obatDetail[0].name.toString())
-            txtKategori.setText(obatDetail[0].kategori.toString())
-            txtPhotoUrl.setText(obatDetail[0].photoUrl.toString())
+            txtId.setText(obatDetail.id.toString())
+            txtNama.setText(obatDetail.name.toString())
+            txtKategori.setText(obatDetail.kategori.toString())
+            txtPhotoUrl.setText(obatDetail.photoUrl.toString())
 
             val imageView = view.findViewById<ImageView>(R.id.imgViewObatDetail)
-            imageView.loadImage(obatDetail[0].photoUrl)
+            imageView.loadImage(obatDetail.photoUrl)
         })
     }
 }

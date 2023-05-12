@@ -1,37 +1,57 @@
 package com.example.a160420043.viewmodel
 
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.a160420043.model.Jadwal
 import com.example.a160420043.model.Obat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
-class ObatListViewModel: ViewModel() {
-
+class ObatListViewModel(application: Application): AndroidViewModel(application) {
     val obatsLD = MutableLiveData<ArrayList<Obat>>()
-    val obatDetailLD = MutableLiveData<ArrayList<Obat>>()
+    val obatDetailLD = MutableLiveData<Obat>()
 
-    val obat1 =
-        Obat("16055","Adem Sari","Minuman herbal", "https://kalcare.s3-ap-southeast-1.amazonaws.com/moch4/uploads/product/19284/19284_1637307873.3592__540x540.jpg")
-    val obat2 =
-        Obat("13312","Betadine","Antiseptik", "https://kalcare.s3-ap-southeast-1.amazonaws.com/moch4/uploads/product/14381/14381_1624258523.7964__540x540.jpg")
-    val obat3 =
-        Obat("11204","CTM","Antihistamine", "https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/2/15/ba7662c5-526c-4dff-87cb-7cb04463fba8.jpg.webp")
-    val obat4 =
-        Obat("10001","Dopamin","Obat jantung", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Dopamine_HCl.JPG/1536px-Dopamine_HCl.jpg")
-
-    val ObatList:ArrayList<Obat> = arrayListOf<Obat>(obat1, obat2, obat3, obat4)
+    val TAG = "VOLLEY"
+    private var queue: RequestQueue? = null
 
     fun refresh() {
-        obatsLD.value = ObatList
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://160420043-160420098-160720049.000webhostapp.com/obat_list.php"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                val sType = object: TypeToken<ArrayList<Obat>>() { }.type
+                val result = Gson().fromJson<ArrayList<Obat>>(it, sType)
+                obatsLD.value = result
+            },
+            {
+                Log.d("showvolley", it.toString())
+            })
+        stringRequest.tag = TAG
+        queue?.add(stringRequest)
     }
 
     fun obatDetail(obatId:String) {
-        ObatList.forEachIndexed{ index, data ->
-            val id = data.id
-            if (id == obatId) {
-                val array:ArrayList<Obat> = arrayListOf<Obat>(ObatList[index])
-                obatDetailLD.value = array
-            }
-        }
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://160420043-160420098-160720049.000webhostapp.com/obat_list.php?id=$obatId"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                val sType = object: TypeToken<Obat>() { }.type
+                val result = Gson().fromJson<Obat>(it, sType)
+                obatDetailLD.value = result
+            },
+            {
+                Log.d("showvolley", it.toString())
+            })
+        stringRequest.tag = TAG
+        queue?.add(stringRequest)
     }
 }
